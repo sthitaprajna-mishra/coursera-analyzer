@@ -1,0 +1,35 @@
+  {% extends "layout.html" %}
+
+  {% block content %}
+
+  <style>
+    .display_sec, li{
+      font-family: "Segoe UI",Arial,sans-serif;
+      color: #1a1a1a;
+      font-size: 1.9vw;
+}
+
+    li{
+      font-size: 1.8vw;
+    }
+
+    a, a:visited, a:hover, a:active {
+      color: inherit;
+    }
+  </style>
+
+  <br><br>
+
+  <div class = "display_sec">
+
+    <p>Users have already searched for these courses:</p>
+    <ul>
+      {% for item in course_list %}
+      <li><a href = "{{ url_for('display', link = item[0]) }}">{{item[1]}}</a></li>
+      {% endfor %}
+    </ul>
+
+  </div>
+
+
+  {% endblock %}

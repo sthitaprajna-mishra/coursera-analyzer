@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coursera Analyzer</title>
+</head>
+
+<style>
+    .up{
+        text-align: center;
+    }
+
+    .heading{
+        display: inline-block;
+    }
+
+    .heading h4{
+        font-family: "Segoe UI", Helvetica, sans-serif;
+        color: #666666;
+        font-size: 4vw;
+    }
+
+    input[type=text] {
+        width: 130px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+
+    input[type=text]:focus {
+        width: 50%;
+    }
+
+    .searchbar{
+        text-align: center;
+    }
+
+    .searchbar input{
+        height: 30px;
+        width: 30%;
+    }
+
+    .button {
+        border: none;
+        color: white;
+        padding: 7px 10px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1.7vw;
+    }
+
+    .button3{
+        font-size: 1.2vw;
+        background-color: #f2f2f2;
+        color: #4d94ff;
+        border-radius: 3%;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .button2 {
+        background-color: #005ce6;
+        font-family:'Segoe UI', Tahoma, sans-serif;
+        font-weight: 600;
+        border-radius: 3%;
+    }
+
+    .button2:hover{
+        cursor: pointer;
+    }
+
+    .tip{
+        font-style: italic;
+        font-size: 1.4vw;
+        text-align: center;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+</style>
+
+<body>
+
+    <a href = "{{url_for('index')}}"><button class="button button3">Home</button></a>
+
+    <div class = "up">
+        <img src = "{{url_for('static', filename='images/images.svg')}}" style = "width: 40%; max-width:100%; height: auto;">
+
+        <div class = "heading">
+            <h4>Analyzer</h4>
+        </div>
+    </div>
+
+    <div class = "searchbar">
+        <form action="{{ url_for('predict')}}"method="post">
+            <input type="text" name="website" placeholder="Website URL" required="required" />
+            <br><br>
+            <button type = "submit" class="button button2">Analyze</button>
+        </form>        
+    </div>
+
+    <br>
+    <p class = "tip">Pro Tip: Please wait while we fetch the reviews and analyze them. This might take a few minutes.</p>
+
+    {% block content %}
+
+    {% endblock %}
+   
+
+</body>
+</html>
